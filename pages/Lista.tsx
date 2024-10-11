@@ -13,8 +13,8 @@ type Produto = {
 
 export default function Lista({navigation}) {
 
-    function TelaAvalia() {
-        navigation.navigate("Avaliação")
+    function TelaAvalia(productId) {
+        navigation.navigate("Avaliação", { productId });
     }
 
     const [products, setProducts] = useState<Produto[]>([])
@@ -48,7 +48,7 @@ export default function Lista({navigation}) {
                                 <Text style={styles.information}>Marca: {item.brand}</Text>
                                 <Text style={styles.information}>Descrição: {item.description}</Text>
                                 <Text style={styles.price}>Preço: {item.price}</Text>
-                                <TouchableOpacity style={styles.enterButton} onPress={TelaAvalia}>
+                                <TouchableOpacity style={styles.enterButton} onPress={() => TelaAvalia(item.id)}>
                                     <Text style={styles.enterButtonText}>Avaliar</Text>
                                 </TouchableOpacity>
                             </View>

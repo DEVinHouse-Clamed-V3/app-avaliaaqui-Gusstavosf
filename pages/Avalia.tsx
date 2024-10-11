@@ -3,9 +3,11 @@ import { Text, Alert, ScrollView, FlatList, SafeAreaView, View, TouchableOpacity
 import axios from 'axios'
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 
-export default function Avalia(navigation) {
 
 
+export default function Avalia({route}) {
+
+    const { productId } = route.params;
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [experiencia, setExperiencia] = useState('')
@@ -34,6 +36,7 @@ export default function Avalia(navigation) {
             Alert.alert("Aviso", "Selecionar um sentimento é obrigatório!")
         } else {
             axios.post('http://192.168.3.5:3000/evaluations', {
+                productId: productId,
                 name: nome,
                 email: email,
                 feedback: experiencia,
@@ -225,5 +228,5 @@ const styles = StyleSheet.create({
     },
     selectedText: {
         color: '#fff'
-      },
+    },
 })
