@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Text, ScrollView, SafeAreaView, View, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Intro({ navigation }) {
+export default function Intro({ navigation }: any) {
 
     function TelaLista() {
         navigation.navigate("Listagem")

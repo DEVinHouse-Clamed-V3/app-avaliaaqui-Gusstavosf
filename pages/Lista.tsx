@@ -8,19 +8,19 @@ type Produto = {
     price: number
     brand: string
     description: string
-    image: Image
+    image: string
 }
 
-export default function Lista({navigation}) {
+export default function Lista({navigation}:any) {
 
-    function TelaAvalia(productId) {
+    function TelaAvalia(productId:number) {
         navigation.navigate("Avaliação", { productId });
     }
 
     const [products, setProducts] = useState<Produto[]>([])
 
     useEffect(() => {
-        axios.get('http://192.168.3.5:3000/products')
+        axios.get('http://192.168.0.9:3000/products')
             .then((response) => {
                 setProducts(response.data)
             })
